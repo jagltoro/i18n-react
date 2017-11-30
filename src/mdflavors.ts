@@ -14,6 +14,7 @@ const R = {
   "\n": /^(.*?)[^\S\n]*\n()[^\S\n]*([\s\S]*)$/,
   "{{}}": /^(.*?)\{\{(.*?)\}\}(.*)$/,
   "{}": /^(.*?)\{(.*?)\}(.*)$/,
+  "<>": /^(.*?)\<(.*?)\>(.*)$/,
 };
 
 export interface MDFlavor {
@@ -22,23 +23,8 @@ export interface MDFlavor {
 }
 
 export const mdFlavors: MDFlavor[] = [
-  { // V0
-    maybe: /[\*_\{\[\n]/,
-    tags: {
-      strong: R["*"],
-      em: R["_"],
-      p: R["[]"],
-      h1: R["#"],
-      h2: R["##"],
-      h3: R["###"],
-      h4: R["####"],
-      br: R["\n"],
-      self: R["{{}}"],
-      inter: R["{}"],
-    }
-  },
   { // V1
-    maybe: /[`\*_~\{\[\n]/,
+    maybe: /[`\<*_~\{\[\n]/,
     tags: {
       literal: R["``"],
       strong: R["**"],
@@ -55,6 +41,7 @@ export const mdFlavors: MDFlavor[] = [
       br: R["\n"],
       self: R["{{}}"],
       inter: R["{}"],
+      code: R["<>"],
     }
   }
 ];
