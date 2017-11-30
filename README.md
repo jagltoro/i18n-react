@@ -1,15 +1,19 @@
-[![Build Status](https://travis-ci.org/alexdrel/i18n-react.svg?branch=master)](https://travis-ci.org/alexdrel/i18n-react)
-
-i18n-react
+Fork of [i18n-react](https://github.com/alexdrel/i18n-react)
 ===
-React (JS) text internationalization and externalizing.
-Markdown-ish syntax with variables support (including of react element type).
+
+
+
+i18react
+===
+* React (JS) text internationalization and externalizing.
+* Markdown-ish syntax with variables support (including of react element type).
+* Adding some new markdown code 
 
 ### Quick example
 
 ```js
 var React = require('react');
-var T = require('i18n-react');
+var T = require('i18react');
 
 T.setTexts({
   greeting: "### Hello, World!\n My name is **{myName}**! \n {{howAreYou}}",
@@ -27,36 +31,6 @@ Unsurprisingly renders:
 ### Hello, World!
 My name is **i18n-react**!
 
-_How do you do?_
-
-********
-
-### External yaml resource file
-Usually texts are retrived from an extrenal source (I would recommend YAML format) but
-loading of the external files is out of scope for the library.
-
-```yaml
-greetings:
-  hello: Hi, {who}!
-  howdy:
-    formal: How do you do?
-    normal: How are you, {who}?
-    informal: "What's up?"
-  bye: Bye
-
-longTime:
-  0: Not a day no see
-  1: 1 day no see
-  '2..4': A few days no see
-  _: "[{context} days][Long time no see]"
-```
-
-Points of interest:
-* {who} - variable interpolation
-* formal/informal - context selectors
-* longTime - pluralization and range
-* [X days][...] - renders two paragraphs
-
 
 ## Usage
 Npm compatible packager (browserify/webpack) is recommended, but ```Dist``` folder also contains UMD versions
@@ -64,7 +38,7 @@ Npm compatible packager (browserify/webpack) is recommended, but ```Dist``` fold
 
 ```js
 /* ES6 & TS */
-import T from 'i18n-react';
+import T from 'i18react';
 /* commonJS */
 var T = require('i18n-react').default;
 /* when using UMD version w/o modules */
@@ -95,7 +69,7 @@ Use it anywhere:
 In case you want to control lifecycle of the dictionary object (instead of default singleton)
 it can be created with MDText constructor.
 ```js
-import { MDText } from 'i18n-react';
+import { MDText } from 'i18react';
 let T = new MDText({...});
 let x = T.translate("path.to.string");
 <T.span text="path.to.string" />
@@ -150,71 +124,16 @@ T.translate('n', { context: 9 })) // 'Number 9'
 
 ## Markdown syntax
 
- + ``*italic*`` *italic*  - ``<em>`` **breaking change V1, ``<strong>`` in V0**
- + ``_italic_`` _italic_  - ``<i>`` **breaking change V1, ``<em>`` in V0**
- + ``**bold**`` **bold** ``<strong>`` *new - V1*
- + ``__bold__`` __bold__ ``<b>`` *new - V1*
- + ``~underlined~`` <u>underlined</u> ``<u>`` *new - V1*
- + ``~~strike~~`` ~~strike~~  ``<strike>`` *new - V1*
+ + ``*italic*`` *italic*  - ``<em>``
+ + ``_italic_`` _italic_  - ``<i>``
+ + ``**bold**`` **bold** ``<strong>``
+ + ``__bold__`` __bold__ ``<b>``
+ + ``~underlined~`` <u>underlined</u> ``<u>``
+ + ``~~strike~~`` ~~strike~~  ``<strike>``
  + ``\n`` New Line ``<br>``
  + ``[Paragraph 1][Paragraph 2]`` Multiple paragraphs ``<p>``
  + ``#``-``####`` Headers ``<h1>-<h4>``
- + \`\` \*as\*\_[IS]\_ \`\`  Literal  *new - V1*
-
-### Unit tests are half-loaf documentation
-You are welcomed to consult examples folder and unit tests for usage details and examples.
-
-## Breaking changes
-### 0.6
-##### Literal \`\` in V1 syntax
-New \`\` syntax  \`\` (in V1 only) to disable MD processing.
-
-### 0.5
-##### React 16+ required
-As React now allows fragments and strings in render the default behavior of ``<T.text>`` changed not to wrap the output into ``<span>`` when ``tag`` property is not specified.
-
-### 0.4
-##### New MD syntax
-The new MD flavor (aligned with github's Markdown) is added : V1. Opt-in for this release, will become default in the next major release.
-V1 introduces strike and underline, and rehabilitates ``<b>`` and ``<i>`` tags.
-
-```yaml
-  em: "an *italic* style"
-  i: "an _italic_ style"
-  strong: "a **bold** move"
-  b: "a __bold__ move"
-  u: "an ~underlined~ word"
-  strike: "a ~~strike~~ out"
-```
-To opt-in for the new syntax:
-```js
-let T = new MDText(texts, { MDFlavor: 1 });
-// or for the singelton
-T.setTexts(require('../texts/texts-en.yml'), { MDFlavor: 1, notFound: 'NA' });
-```
-#### notFound Deprecation
-MDText notFound property is deprecated - please switch to constructor or serTexts options.
-
-### 0.3
-##### Unknown Prop Warning
-React 15.2 is preparing to stop filtering HTML properties (https://fb.me/react-unknown-prop) - the feature that i18n relied upon for
-preventing interpolation variables from leaking into the DOM.
-
-Thus new syntax for passing variables is introduced:
-```xml
-<T.span text={{ key: "greeting", myName: "i18n-react" }}/>
-/* replaces */
-<T.span text="greeting" myName="i18n-react"/>
-```
-All tags passing to T.* anything beside ```text```, ```tag``` and ```context``` properties have to be updated or React 15.2 will cry annoyingly.
-
-##### typescript 2.0 / ts@next typings
-Updated package.json contains all the info for the new typescript to get typings automatically.
-
-### 0.2
-* ES6 style export (use default export explicitly for commonJS/UMD)
-* Stateless react components (shouldComponentUpdate optimization removed)
-* Default export (T above) no longer can be used as a react component (use T.text or T.span instead)
+ + \`\` \*as\*\_[IS]\_ \`\`
 
 ## Development
 #### Commands
