@@ -2,12 +2,12 @@ var webpack = require("webpack");
 
 module.exports = {
   entry: {
-    "i18n-react": "./src/i18n-react.ts",
+    "i18n-react": "./src/i18react.ts",
   },
   output: {
     path: __dirname + '/dist/',
-    filename: 'i18n-react.umd.js',
-    library: 'i18n-react',
+    filename: 'i18react.umd.js',
+    library: 'i18react',
     libraryTarget: "umd"
   },
   externals: {
