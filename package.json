@@ -1,17 +1,17 @@
 {
-  "name": "i18n-react",
-  "version": "0.6.3",
+  "name": "i18react",
+  "version": "0.1.0",
   "description": "React JS text internationalization and externalizing",
-  "main": "dist/i18n-react.js",
-  "typings": "dist/i18n-react.d.ts",
+  "main": "dist/i18react.js",
+  "typings": "dist/i18react.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/alexdrel/i18n-react"
+    "url": "https://github.com/jagltoro/i18n-react"
   },
   "scripts": {
     "start": "tsc -p src -d -watch",
     "prebuild": "tsc -p src -d",
-    "build": "webpack --config webpack-umd.config.js && webpack -p --config webpack-umd.config.js --output-filename i18n-react.umd.min.js",
+    "build": "webpack --config webpack-umd.config.js && webpack -p --config webpack-umd.config.js --output-filename i18react.umd.min.js",
     "examples": "webpack-dev-server --config webpack-ex.config.js --port 1818 -d",
     "build:examples": "webpack --config webpack-ex.config.js -d --progress",
     "test": "karma start karma.config.js --browsers Firefox --single-run",
