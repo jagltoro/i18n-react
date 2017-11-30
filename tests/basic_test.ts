@@ -1,4 +1,4 @@
-import { MDText } from '../src/i18n-react';
+import { MDText } from '../src/i18react';
 
 describe("i18n-react translate", () => {
   let T = new MDText({

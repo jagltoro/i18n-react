@@ -1,6 +1,6 @@
 import * as React from 'react';
 import renderElement from './renderElement';
-import { MDText } from '../src/i18n-react';
+import { MDText } from '../src/i18react';
 
 describe("i18n-react Flavor V1", () => {
   let T = new MDText({}, { MDFlavor: 1 });

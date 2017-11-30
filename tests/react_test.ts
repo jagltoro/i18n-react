@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { default as formatHTML, textHTML } from './formatHTML';
 
-import T from '../src/i18n-react';
+import T from '../src/i18react';
 
 describe("i18n-react", () => {
   beforeEach(() => T.setOpts({ MDFlavor: 0 }));

@@ -1,6 +1,6 @@
 import React = require('react');
 import renderElement from './renderElement';
-import { MDText } from '../src/i18n-react';
+import { MDText } from '../src/i18react';
 
 describe("i18n-react", () => {
 
