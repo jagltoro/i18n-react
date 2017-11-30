@@ -4,10 +4,10 @@
 	else if(typeof define === 'function' && define.amd)
 		define(["React"], factory);
 	else if(typeof exports === 'object')
-		exports["i18n-react"] = factory(require("React"));
+		exports["i18react"] = factory(require("React"));
 	else
-		root["i18n-react"] = factory(root["React"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
+		root["i18react"] = factory(root["React"]);
+})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_1__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -344,26 +344,12 @@ var R = {
     "####": /^(|.*?(?=\n))\n*\s*####([^#].*?)#*\s*\n+([\S\s]*)$/,
     "\n": /^(.*?)[^\S\n]*\n()[^\S\n]*([\s\S]*)$/,
     "{{}}": /^(.*?)\{\{(.*?)\}\}(.*)$/,
-    "{}": /^(.*?)\{(.*?)\}(.*)$/
+    "{}": /^(.*?)\{(.*?)\}(.*)$/,
+    "<>": /^(.*?)\<(.*?)\>(.*)$/
 };
 exports.mdFlavors = [
     {
-        maybe: /[\*_\{\[\n]/,
-        tags: {
-            strong: R["*"],
-            em: R["_"],
-            p: R["[]"],
-            h1: R["#"],
-            h2: R["##"],
-            h3: R["###"],
-            h4: R["####"],
-            br: R["\n"],
-            self: R["{{}}"],
-            inter: R["{}"]
-        }
-    },
-    {
-        maybe: /[`\*_~\{\[\n]/,
+        maybe: /[`\<*_~\{\[\n]/,
         tags: {
             literal: R["``"],
             strong: R["**"],
@@ -379,7 +365,8 @@ exports.mdFlavors = [
             h4: R["####"],
             br: R["\n"],
             self: R["{{}}"],
-            inter: R["{}"]
+            inter: R["{}"],
+            code: R["<>"]
         }
     }
 ];
@@ -407,4 +394,4 @@ exports.mdMatch = mdMatch;
 /***/ })
 /******/ ]);
 });
-//# sourceMappingURL=i18n-react.umd.js.map
+//# sourceMappingURL=i18react.umd.js.map
