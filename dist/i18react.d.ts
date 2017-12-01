@@ -9,6 +9,7 @@ export declare class MDText {
     texts: object;
     constructor(texts: object, opt?: MDTextOpts);
     setTexts(texts: object, opt?: MDTextOpts): void;
+    getTexts(): object;
     setOpts(opt: MDTextOpts): void;
     private MDFlavor;
     notFound: NotFound;

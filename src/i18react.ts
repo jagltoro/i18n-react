@@ -147,6 +147,10 @@ export class MDText {
     this.setOpts(opt);
   }
 
+  getTexts() {
+    return this.texts;
+  }
+
   setOpts(opt: MDTextOpts) {
     if (!opt) return;
     if (opt.notFound !== undefined) this.notFound = opt.notFound;

@@ -234,6 +234,9 @@ var MDText = /** @class */ (function () {
         this.texts = texts;
         this.setOpts(opt);
     };
+    MDText.prototype.getTexts = function () {
+        return this.texts;
+    };
     MDText.prototype.setOpts = function (opt) {
         if (!opt)
             return;
